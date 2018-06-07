@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    host: 116.85.32.90
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true #  消息发送到交换机确认机制,是否确认回调
+    publisher-returns: true  #  消息发送到交换机确认机制,是否返回回馈
+  devtools:
+    restart:
+      enabled: false
+server:
+  port: 90
