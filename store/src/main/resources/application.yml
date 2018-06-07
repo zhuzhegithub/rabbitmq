@@ -4,7 +4,9 @@ spring:
     port: 5672
     username: guest
     password: guest
-    publisher-confirms: true    #  消息发送到交换机确认机制,是否确认回调
+    listener:
+      direct:
+        acknowledge-mode: manual   # 配置该消费者的ack方式为手动
   devtools:
     restart:
       enabled: false #
