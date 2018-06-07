@@ -1,6 +1,8 @@
 package com.space.rbq.store.consumer;
 
+import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
+import com.space.rbq.store.bean.Order;
 import com.space.rbq.store.service.StoreService;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -36,7 +38,7 @@ public class OrderConsumer {
             System.out.println("OrderConsumer {} handleMessage :"+message);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             // 执行减库存操作
-            //storeService.update(new Gson().fromJson(message,Order.class));
+            storeService.update(new Gson().fromJson(new String(message.getBody()),Order.class));
         }catch (Exception e){
             channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,false);
         }
