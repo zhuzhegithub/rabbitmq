@@ -31,13 +31,13 @@ public class OrderConsumer {
      * @param message
      * @param channel
      */
-    @RabbitListener(queues = {QUEUE_NAME1})
+    @RabbitListener(queues = {QUEUE_NAME1},containerFactory = "rabbitListenerContainerFactory")
     public void handleMessage(Message message,Channel channel) throws IOException {
         try {
             // 处理消息
             System.out.println("OrderConsumer {} handleMessage :"+message);
             // 执行减库存操作
-            storeService.update(new Gson().fromJson(new String(message.getBody()),Order.class));
+            //storeService.update(new Gson().fromJson(new String(message.getBody()),Order.class));
 
             /*
             * 第一个参数 deliveryTag：就是接受的消息的deliveryTag,可以通过msg.getMessageProperties().getDeliveryTag()获得
