@@ -8,6 +8,6 @@ spring:
     publisher-returns: true  #  消息发送到交换机确认机制,是否返回回馈
   devtools:
     restart:
-      enabled: false
+      enabled: false # 热部署
 server:
   port: 90
