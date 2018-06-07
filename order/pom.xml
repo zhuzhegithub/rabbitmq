@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>order</name>
-	<description>Demo project for Spring Boot</description>
+	<description>order服务</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
