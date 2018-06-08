@@ -37,7 +37,7 @@ public class OrderConsumer {
             // 处理消息
             System.out.println("OrderConsumer {} handleMessage :"+message);
             // 执行减库存操作
-            //storeService.update(new Gson().fromJson(new String(message.getBody()),Order.class));
+            storeService.update(new Gson().fromJson(new String(message.getBody()),Order.class));
 
             /*
             * 第一个参数 deliveryTag：就是接受的消息的deliveryTag,可以通过msg.getMessageProperties().getDeliveryTag()获得
@@ -51,10 +51,12 @@ public class OrderConsumer {
               注意：如果抛异常或nack（并且requeue为true），消息会重新入队列，
               并且会造成消费者不断从队列中读取同一条消息的假象。
              */
+            // 确认消息
+            // 如果 channel.basicAck   channel.basicNack  channel.basicReject 这三个方法都不执行，消息也会被确认
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
 
-
         }catch (Exception e){
+            // 处理消息失败，将消息重新放回队列
             channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,true);
         }
     }
