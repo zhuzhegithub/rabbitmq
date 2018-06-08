@@ -62,7 +62,7 @@ public class RabbitMqConfig {
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         // template.setMessageConverter(); 可以自定义消息转换器  默认使用的JDK的，所以消息对象需要实现Serializable
-        template.setMessageConverter(new Jackson2JsonMessageConverter());
+        // template.setMessageConverter(new Jackson2JsonMessageConverter());
 
         /**若使用confirm-callback或return-callback，
          * 必须要配置publisherConfirms或publisherReturns为true
