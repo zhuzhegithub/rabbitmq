@@ -19,10 +19,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConfig {
 
-    /*
-    * key: queue在该direct-exchange中的key值，当消息发送给direct-exchange中指定key为设置值时，
-    * 消息将会转发给queue参数指定的消息队列
-    */
+    /**
+     * key: queue在该direct-exchange中的key值，当消息发送给direct-exchange中指定key为设置值时，
+     * 消息将会转发给queue参数指定的消息队列
+     */
     /** 队列key1*/
     public static final String ROUTING_KEY_1 = "queue_one_key1";
     public static final String ROUTING_KEY_2 = "queue_one_key2";
@@ -79,12 +79,13 @@ public class RabbitMqConfig {
         return template;
     }
 
-    /*  关于 msgSendConfirmCallBack 和 msgSendReturnCallback 的回调说明：
-        1.如果消息没有到exchange,则confirm回调,ack=false
-        2.如果消息到达exchange,则confirm回调,ack=true
-        3.exchange到queue成功,则不回调return
-        4.exchange到queue失败,则回调return(需设置mandatory=true,否则不回回调,消息就丢了)
-    */
+    /**
+     * 关于 msgSendConfirmCallBack 和 msgSendReturnCallback 的回调说明：
+     * 1.如果消息没有到exchange,则confirm回调,ack=false
+     * 2.如果消息到达exchange,则confirm回调,ack=true
+     * 3.exchange到queue成功,则不回调return
+     * 4.exchange到queue失败,则回调return(需设置mandatory=true,否则不回调,消息就丢了)
+     */
 
     /**
      * 消息确认机制
