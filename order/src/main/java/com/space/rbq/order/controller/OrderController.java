@@ -55,8 +55,8 @@ public class OrderController {
         // TODO 将 msgId 与 Message 的关系保存起来
         /**
          * 将 msgId 与 Message 的关系保存起来,例如放到缓存中.
-         * 当 MsgSendReturnCallback回调时（消息从交换机到队列失败）,进行处理 @code {MsgSendReturnCallback}.
-         * 当 MsgSendConfirmCallBack回调时,进行处理 @code {MsgSendConfirmCallBack}.
+         * 当 MsgSendReturnCallback回调时（消息从交换机到队列失败）,进行处理 {@code MsgSendReturnCallback}.
+         * 当 MsgSendConfirmCallBack回调时,进行处理 {@code MsgSendConfirmCallBack}.
          * 定时检查这个绑定关系列表,如果发现一些已经超时(自己设定的超时时间)未被处理,则手动处理这些消息.
          */
         /**
