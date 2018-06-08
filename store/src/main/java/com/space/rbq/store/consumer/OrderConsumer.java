@@ -55,6 +55,7 @@ public class OrderConsumer {
             */
             // 确认消息
             // 如果 channel.basicAck   channel.basicNack  channel.basicReject 这三个方法都不执行，消息也会被确认
+            // 所以，正常情况下一般不需要执行 channel.basicAck
             // channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
 
         }catch (Exception e){
