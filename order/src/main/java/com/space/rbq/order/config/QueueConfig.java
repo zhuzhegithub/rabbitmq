@@ -24,7 +24,7 @@ public class QueueConfig {
     @Bean
     public Queue firstQueue() {
         /**
-         durable="true" 持久化 rabbitmq重启的时候不需要创建新的队列
+         durable="true" 持久化消息队列 ， rabbitmq重启的时候不需要创建新的队列
          auto-delete 表示消息队列没有在使用时将被自动删除 默认是false
          exclusive  表示该消息队列是否只在当前connection生效,默认是false
          */
