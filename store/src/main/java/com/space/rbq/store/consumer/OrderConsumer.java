@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.space.rbq.store.bean.Order;
 import com.space.rbq.store.service.StoreService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.io.IOException;
  * @date 2018/6/7 10:09
  * @email 1529949535@qq.com
  */
+@Slf4j
 @Component
 public class OrderConsumer {
 
@@ -31,7 +33,7 @@ public class OrderConsumer {
      * @param message
      * @param channel
      */
-    @RabbitListener(queues = {QUEUE_NAME1},containerFactory = "rabbitListenerContainerFactory")
+    @RabbitListener(queues = {QUEUE_NAME1})
     public void handleMessage(Message message,Channel channel) throws IOException {
         try {
             // 处理消息
@@ -56,6 +58,7 @@ public class OrderConsumer {
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
 
         }catch (Exception e){
+            log.error("OrderConsumer  handleMessage {} , error:",message,e);
             // 处理消息失败，将消息重新放回队列
             channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,true);
         }
