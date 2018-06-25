@@ -66,6 +66,7 @@ public class OrderController {
          */
         rabbitTemplate.convertAndSend("first_exchange", "queue_one_key1",
                 message, correlationData);
+        System.out.println("发送消息：correlationData" + correlationData);
         return order;
     }
 }

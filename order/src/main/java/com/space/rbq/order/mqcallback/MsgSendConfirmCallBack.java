@@ -21,7 +21,7 @@ public class MsgSendConfirmCallBack implements RabbitTemplate.ConfirmCallback {
      */
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("MsgSendConfirmCallBack  , 回调id:" + correlationData);
+        System.out.println("MsgSendConfirmCallBack  , 回调correlationData:" + correlationData);
         if (ack) {
             System.out.println("消息发送到exchange成功");
             // TODO 删除 msgId 与 Message 的关系
