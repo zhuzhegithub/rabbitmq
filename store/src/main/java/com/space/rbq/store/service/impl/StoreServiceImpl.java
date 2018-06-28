@@ -17,6 +17,7 @@ public class StoreServiceImpl implements StoreService{
     @Transactional
     @Override
     public int update(Order order) {
+        // 这里不做实现
         return 0;
     }
 }
