@@ -12,7 +12,7 @@ public class MsgSendReturnCallback implements RabbitTemplate.ReturnCallback {
 
     /**
      * 当消息从交换机到队列失败时，该方法被调用。（若成功，则不调用）
-     * 需要注意的是：该方法调用后，MsgSendConfirmCallBack中的confirm方法也会被调用，且ack = true
+     * 需要注意的是：该方法调用后，{@link MsgSendConfirmCallBack}中的confirm方法也会被调用，且ack = true
      * @param message
      * @param replyCode
      * @param replyText
